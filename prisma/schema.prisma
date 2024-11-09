@@ -1,0 +1,47 @@
+// prisma/schema.prisma
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+model Customer {
+  id          Int           @id @default(autoincrement())
+  username    String        @unique
+  password    String
+  balance     Float
+  transactions Transaction[]
+}
+
+model Computer {
+  id           Int           @id @default(autoincrement())
+  name         String        @unique
+  type         String        // e.g., "regular", "vip"
+  status       String        // e.g., "available", "in-use", "broken"
+  pricing      String       // e.g., "per-hour", "per-day", "per-week"
+  transactions Transaction[]
+}
+
+model Staff {
+  id       Int      @id @default(autoincrement())
+  username String   @unique
+  password String
+  role     String   // e.g., "admin", "staff"
+}
+
+model Transaction {
+  id          Int       @id @default(autoincrement())
+  computer    Computer  @relation(fields: [computerId], references: [id])
+  computerId  Int
+  customer    Customer  @relation(fields: [customerId], references: [id])
+  customerId  Int
+  startTime   DateTime
+  endTime     DateTime?
+  cost        Float?
+
+  @@index([computerId])
+  @@index([customerId])
+}

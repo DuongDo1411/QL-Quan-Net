@@ -1,0 +1,18 @@
+.swal2-input {
+  width: 50%;
+  border: 1px solid #ccc;
+  border-radius: 5px; /* Thay đổi góc cạnh */
+  background-color: #fff; /* Màu nền */
+  font-size: 16px; /* Kích thước chữ */
+}
+
+.swal2-input:focus {
+  border-color: #007bff; /* Màu viền khi chọn */
+  outline: none; /* Không viền khi chọn */
+}
+.backround-images {
+  background-image: url("/images/COMPUTER (1).png");
+  background-size: cover; /* Phủ đầy phần tử */
+  background-position: center; /* Căn giữa ảnh */
+  height: 200px;
+}
