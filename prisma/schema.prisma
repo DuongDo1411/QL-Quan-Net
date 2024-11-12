@@ -34,8 +34,8 @@ model Staff {
 
 model Transaction {
   id          Int       @id @default(autoincrement())
-  computer    Computer  @relation(fields: [computerId], references: [id])
-  computerId  Int
+  computer    Computer?  @relation(fields: [computerId], references: [id], onDelete: SetNull)
+  computerId  Int?
   customer    Customer  @relation(fields: [customerId], references: [id])
   customerId  Int
   startTime   DateTime

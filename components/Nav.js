@@ -54,7 +54,7 @@ export default function Nav({ show }) {
                   d="M4 6h16M4 12h16m-16 6h16M3 6v12h18V6H3z"
                 />
               </svg>
-              Quản Lý Hoạt Động
+              Home
             </Link>
             <Link
               style={{ textDecoration: "none", color: "black" }}
@@ -104,7 +104,7 @@ export default function Nav({ show }) {
               </svg>
               Quản Lý Khách Hàng
             </Link>
-            {checkRole.role === "admin" ? (
+            {checkRole.username === "admin" && checkRole.role === "admin" ? (
               <Link
                 style={{ textDecoration: "none", color: "black" }}
                 href={"/ManageStaff"}
